@@ -8,8 +8,18 @@ pipeline {
         COURSE = "DevOps"   // Define any environment variables here if needed
     }
     options {
-        timeout(time: 10, unit: 'SECONDS')   // Add any pipeline options here if needed
+        timeout(time: 10, unit: 'MINUTES')   // Add any pipeline options here if needed
+        disableConcurrentBuilds()  // Prevent concurrent builds of this pipeline
     }
+
+    parameters {
+        string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+        text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
+        booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
+        choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
+        password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
+    }
+
     stages { 
         stage('Build') {
             steps {
