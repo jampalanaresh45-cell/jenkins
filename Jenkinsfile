@@ -7,7 +7,9 @@ pipeline {
     environment {
         COURSE = "DevOps"   // Define any environment variables here if needed
     }
-
+    options {
+        timeout(time: 10, unit: 'SECONDS')   // Add any pipeline options here if needed
+    }
     stages { 
         stage('Build') {
             steps {
@@ -15,6 +17,7 @@ pipeline {
                     sh """
                         echo "Building"
                         echo $COURSE
+                        sleep 10
                         env
                     """
                 }
@@ -52,6 +55,9 @@ pipeline {
         }
         failure {
             echo "This will run only if the build fails."
+        }
+        aborted {
+            echo "Pipeline is aborted."
         }
     }
 }
