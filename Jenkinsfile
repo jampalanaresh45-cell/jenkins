@@ -1,14 +1,14 @@
 pipeline {
-    agent{
+    agent {
         node {
             label 'AGENT-1'
         }
     
     }
-    stages 
+    stages { 
         stage('Build') {
             steps {
-                script{
+                script  {
                     sh """
                         echo "Building"
                     """
@@ -44,6 +44,7 @@ pipeline {
         failure {
             echo "This will run only if the build fails."
         }
+    
     }
    
 }
