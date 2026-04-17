@@ -3,37 +3,41 @@ pipeline {
         node {
             label 'AGENT-1'
         }
-    
     }
+
     stages { 
         stage('Build') {
             steps {
-                script  {
+                script {
                     sh """
                         echo "Building"
                     """
                 }
             }
         }
+
         stage('Test') {
             steps {
-                script{
+                script {
                     sh """
-                        echo "Building"
+                        echo "Testing"
                     """
                 }
             }
         }
+
         stage('Deploy') {
             steps {
-                script{
+                script {
                     sh """
-                        echo "Building"
-                }    """
+                        echo "Deploying"
+                    """
+                }
             }
         }
     }
-    post{
+
+    post {
         always { 
             echo "I'll always say Hello World!"
             cleanWs()
@@ -44,7 +48,5 @@ pipeline {
         failure {
             echo "This will run only if the build fails."
         }
-    
     }
-   
 }
