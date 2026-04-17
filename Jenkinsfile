@@ -3,7 +3,6 @@ pipeline {
         node {
             label 'AGENT-1'
         } 
-             
     }
     stages {
         stage('Build') {
@@ -22,4 +21,10 @@ pipeline {
             }
         }
     }
+    post{
+        always { 
+            echo "I'll always say Hello World!"
+        }
+    }
+
 }
