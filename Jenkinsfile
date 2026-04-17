@@ -1,10 +1,10 @@
 pipeline {
-    agent {
+    agent 
         node {
             label 'AGENT-1'
         } 
     }
-    stages {
+    stages 
         stage('Build') {
             steps {
                 script{
@@ -19,8 +19,8 @@ pipeline {
                 script{
                     sh """
                         echo "Building"
-                }     """
-                   
+                    """
+                }
             }
         }
         stage('Deploy') {
@@ -44,5 +44,5 @@ pipeline {
             echo "This will run only if the build fails."
         }
     }
-
+   
 }
