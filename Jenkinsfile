@@ -4,6 +4,9 @@ pipeline {
             label 'AGENT-1'
         }
     }
+    environment {
+        COURSE = "DevOps"   // Define any environment variables here if needed
+    }
 
     stages { 
         stage('Build') {
@@ -11,6 +14,7 @@ pipeline {
                 script {
                     sh """
                         echo "Building"
+                        echo $COURSE
                     """
                 }
             }
